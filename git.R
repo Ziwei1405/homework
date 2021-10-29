@@ -32,4 +32,4 @@ join_HDI <- WCG%>%
   left_join(.,
             HDIcols,
             by=c('aff_iso'='iso_code'))
-
+#29th Oct
