@@ -1,10 +1,3 @@
-install.packages('sf')
-install.packages('here')
-install.packages('tidyverse')
-install.packages('janitor')
-install.packages('raster')
-install.packages('countrycode')
-
 library(sf)
 library(here)
 library(tidyverse)
@@ -24,7 +17,7 @@ HDIcols <- HDI %>%
   select(country,x2019,x2010)%>%
   mutate(difference=x2019-x2010)%>%
   slice(1:189,)%>%
-  mutate(iso_code=countrycode(HDIcols$country,origin ='country.name',destination = 'iso2c'))
+  mutate(iso_code=countrycode(country, origin='country.name',destination = 'iso2c'))
   
 
 join_HDI <- WCG%>%
