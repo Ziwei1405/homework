@@ -26,3 +26,36 @@ join_HDI <- WCG%>%
             HDIcols,
             by=c('aff_iso'='iso_code'))
 #29th Oct
+
+
+#plot
+library(tmap)
+library(tmaptools)
+
+#tmap mode set to plotting
+#static map
+tmap_mode("plot")
+tmap_options(bg.color = "white", legend.text.color = "black")
+
+tm_shape(join_HDI) +
+  tm_polygons(col = "difference", n = 5,
+              style = "jenks")+
+  tm_scale_bar(position = c(0.02,0.095), 
+               text.size = .75,
+               lwd = .5,
+               width = .2)+
+  tm_layout(legend.text.size=.65, 
+            legend.title.size = 1.1,
+            legend.outside = TRUE,
+            frame=FALSE)+
+  tm_compass(type = 'arrow', position=c(0.015,0.2), size = 1.15)
+
+#interactive map
+tmap_mode("view")
+
+tm_shape(join_HDI) + 
+  tm_polygons("difference", n = 5)
+
+#Advanced interactive map
+library(leafpop)
+library(leaflet)
