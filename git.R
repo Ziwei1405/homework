@@ -56,6 +56,18 @@ tmap_mode("view")
 tm_shape(join_HDI) + 
   tm_polygons("difference", n = 5)
 
-#Advanced interactive map
-library(leafpop)
-library(leaflet)
+#compare the difference of GII
+join_HDI2 <- join_HDI%>%
+  mutate(summary = case_when(difference < 0 ~"improved",
+                             difference > 0 ~"worse",
+                             TRUE~"the same"))
+  
+
+
+
+
+
+
+
+
+
